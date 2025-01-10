@@ -1,0 +1,58 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taş Kağıt Makas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .choice {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: 1px solid #000;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Taş Kağıt Makas</h1>
+    <p>Bir seçim yap:</p>
+    <div id="choices">
+        <div class="choice" onclick="playGame('taş')">Taş</div>
+        <div class="choice" onclick="playGame('kağıt')">Kağıt</div>
+        <div class="choice" onclick="playGame('makas')">Makas</div>
+    </div>
+
+    <p id="result"></p>
+
+    <script>
+        function playGame(userChoice) {
+            const choices = ['taş', 'kağıt', 'makas'];
+            const computerChoice = choices[Math.floor(Math.random() * 3)];
+            let result = '';
+
+            if (userChoice === computerChoice) {
+                result = 'Berabere!';
+            } else if (
+                (userChoice === 'taş' && computerChoice === 'makas') ||
+                (userChoice === 'kağıt' && computerChoice === 'taş') ||
+                (userChoice === 'makas' && computerChoice === 'kağıt')
+            ) {
+                result = 'Sen Kazandın!';
+            } else {
+                result = 'Bilgisayar Kazandı!';
+            }
+
+            document.getElementById('result').textContent = Senin Seçimin: ${userChoice}, Bilgisayarın Seçimi: ${computerChoice} - ${result};
+        }
+    </script>
+
+</body>
+</html>
