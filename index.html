@@ -14,7 +14,6 @@
             font-size: 18px;
             padding: 10px 20px;
             margin: 10px;
-            cursor: pointer;
             border: 1px solid #000;
             display: inline-block;
         }
@@ -32,36 +31,32 @@
         <input type="text" id="user2" placeholder="Kullanıcı 2">
     </div>
     
-    <p>Bir seçim yap:</p>
-    <div id="choices">
-        <div class="choice" onclick="playGame('taş')">Taş</div>
-        <div class="choice" onclick="playGame('kağıt')">Kağıt</div>
-        <div class="choice" onclick="playGame('makas')">Makas</div>
-    </div>
-
+    <br>
+    <button onclick="playGame()">Çalıştır</button>
     <p id="result"></p>
 
     <script>
-        function playGame(userChoice) {
+        function playGame() {
             const user1Name = document.getElementById('user1').value || 'Kullanıcı 1';
-            const user2Name = document.getElementById('user2').value || 'Bilgisayar';
+            const user2Name = document.getElementById('user2').value || 'Kullanıcı 2';
             const choices = ['taş', 'kağıt', 'makas'];
-            const computerChoice = choices[Math.floor(Math.random() * 3)];
+            const user1Choice = choices[Math.floor(Math.random() * 3)];
+            const user2Choice = choices[Math.floor(Math.random() * 3)];
             let result = '';
 
-            if (userChoice === computerChoice) {
+            if (user1Choice === user2Choice) {
                 result = 'Berabere!';
             } else if (
-                (userChoice === 'taş' && computerChoice === 'makas') ||
-                (userChoice === 'kağıt' && computerChoice === 'taş') ||
-                (userChoice === 'makas' && computerChoice === 'kağıt')
+                (user1Choice === 'taş' && user2Choice === 'makas') ||
+                (user1Choice === 'kağıt' && user2Choice === 'taş') ||
+                (user1Choice === 'makas' && user2Choice === 'kağıt')
             ) {
                 result = ${user1Name} Kazandı!;
             } else {
                 result = ${user2Name} Kazandı!;
             }
 
-            document.getElementById('result').textContent = ${user1Name} Seçimi: ${userChoice}, ${user2Name} Seçimi: ${computerChoice} - ${result};
+            document.getElementById('result').textContent = ${user1Name} Seçimi: ${user1Choice}, ${user2Name} Seçimi: ${user2Choice} - ${result};
         }
     </script>
 
