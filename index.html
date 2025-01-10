@@ -23,6 +23,15 @@
 <body>
 
     <h1>Taş Kağıt Makas</h1>
+    
+    <div>
+        <label for="user1">Birinci Kullanıcı İsmi:</label>
+        <input type="text" id="user1" placeholder="Kullanıcı 1">
+        <br><br>
+        <label for="user2">İkinci Kullanıcı İsmi:</label>
+        <input type="text" id="user2" placeholder="Kullanıcı 2">
+    </div>
+    
     <p>Bir seçim yap:</p>
     <div id="choices">
         <div class="choice" onclick="playGame('taş')">Taş</div>
@@ -34,6 +43,8 @@
 
     <script>
         function playGame(userChoice) {
+            const user1Name = document.getElementById('user1').value || 'Kullanıcı 1';
+            const user2Name = document.getElementById('user2').value || 'Bilgisayar';
             const choices = ['taş', 'kağıt', 'makas'];
             const computerChoice = choices[Math.floor(Math.random() * 3)];
             let result = '';
@@ -45,12 +56,12 @@
                 (userChoice === 'kağıt' && computerChoice === 'taş') ||
                 (userChoice === 'makas' && computerChoice === 'kağıt')
             ) {
-                result = 'Sen Kazandın!';
+                result = ${user1Name} Kazandı!;
             } else {
-                result = 'Bilgisayar Kazandı!';
+                result = ${user2Name} Kazandı!;
             }
 
-            document.getElementById('result').textContent = Senin Seçimin: ${userChoice}, Bilgisayarın Seçimi: ${computerChoice} - ${result};
+            document.getElementById('result').textContent = ${user1Name} Seçimi: ${userChoice}, ${user2Name} Seçimi: ${computerChoice} - ${result};
         }
     </script>
 
