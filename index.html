@@ -1,71 +1,134 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taş Kağıt Makas</title>
-    <style>
-        body {background-color: gray;}
-        body {
-            font-family: Arial, sans-serif;
+<html>
+    <head>
+        <style>
+        h1{
+            color:red;
             text-align: center;
-            margin-top: 50px;
+            font-family:Ubuntu,Sans-serif;
         }
-        .choice {
-            font-size: 18px;
-            padding: 10px 20px;
-            margin: 10px;
-            border: 1px solid #000;
-            display: inline-block;
+        div{
+            text-align: center;
         }
-    </style>
-</head>
-<body>
-
-    <h1>Taş Kağıt Makas</h1>
-    
-    <div>
-        <label for="user1">Birinci Kullanıcı İsmi:</label>
-        <input type="text" id="user1" placeholder="Kullanıcı 1">
-        <br><br>
-        <label for="user2">İkinci Kullanıcı İsmi:</label>
-        <input type="text" id="user2" placeholder="Kullanıcı 2">
-    </div>
-    
-    <br>
-    <button onclick="playGame()">Çalıştır</button>
-    <p id="result"></p>
-    <label id="winnerLabel" style="display:block; margin-top:20px; font-size:18px;"></label>
-
-    <script>
-        function playGame() {
-            const user1Name = document.getElementById('user1').value || 'Kullanıcı 1';
-            const user2Name = document.getElementById('user2').value || 'Kullanıcı 2';
-            const choices = ['taş', 'kağıt', 'makas'];
-            const user1Choice = choices[Math.floor(Math.random() * 3)];
-            const user2Choice = choices[Math.floor(Math.random() * 3)];
-            let result = '';
-            let winnerText = '';
-
-            if (user1Choice === user2Choice) {
-                result = 'Berabere!';
-                winnerText = 'Berabere!';
-            } else if (
-                (user1Choice === 'taş' && user2Choice === 'makas') ||
-                (user1Choice === 'kağıt' && user2Choice === 'taş') ||
-                (user1Choice === 'makas' && user2Choice === 'kağıt')
-            ) {
-                result = ${user1Name} Kazandı!;
-                winnerText = ${user1Name} Kazandı!;
-            } else {
-                result = ${user2Name} Kazandı!;
-                winnerText = ${user2Name} Kazandı!;
-            }
-
-            document.getElementById('result').textContent = ${user1Name} Seçimi: ${user1Choice}, ${user2Name} Seçimi: ${user2Choice} - ${result};
-            document.getElementById('winnerLabel').textContent = winnerText;
+        #banner{
+            width:225px;
+            height: 250px;
         }
-    </script>
+        #sonuç{
+            width:250px;
+            height:200px
+        }
+        body{
+            background-color:gainsboro;
+        }
+        </style>
+    </head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <script>
+            $(function () {
+                $("img.rakip,ul li#hide,img#sonuç,div#sncksm").hide()
+                $("ul").css({
+                    "margin":"200px 0px"
+                        })
+                        $("img.bizimkiler").css({
+                            "width":"120px",
+                            "height":"90px"
+                            })
+                            $("img.rakip").css({
+                                "margin":"80px 155px",
+                                "width":"250px",
+                                "height":"200px",
+                                "float":"right"
+                                });
+                                $("div#sncksm").css({
+                    "text-align":"center",
+                    "margin":"125px 0px",
+                    "font-family":"ubuntu, sans-serif"
+                    })
+                    $("img#sonuç").css({
+                        "width":"250px",
+                        "height":"200px",
+                        "float":"left",
+                        "margin":"80px 155px"
+                    })
 
-</body>
+                    $("img.bizimkiler").click(function(){
+ $("img.rakip,img#sonuç,div#sncksm").hide()
+                  $("img.rakip,img#sonuç,div#sncksm").fadeIn()
+                        $("img#sonuç").attr("src",this.src);
+                    })
+
+                        $("ul li").click(function (){  
+                            var y = $(this).index()
+                        var x = Math.floor(Math.random(10)* 3)+1
+                        if(x==1){
+                            $("img.rakip").attr("src","http://i.hizliresim.com/AzJ76p.png")
+                            if(y==1){
+                               $("p#s2").text("Berabere")
+                            }
+                            else if(y==2){
+                                $("p#s2").text("Kaybettin.")
+                                }
+                                else if(y==3){
+                                    $("p#s2").text("Kazandın.")
+                                }
+                            }
+                        else if(x==2){
+                            $("img.rakip").attr("src","http://i.hizliresim.com/oV738k.png")
+                            if(y==1){
+                                $("p#s2").text("Kazandın")
+                            }
+                            else if(y==3){
+                                $("p#s2").text("Kaybettin")
+                            }
+                            else if (y==2){
+                                $("p#s2").text("Berabere")
+                            }
+                        }
+                        else if(x==3){
+                            $("img.rakip").attr("src","http://i.hizliresim.com/dBb32L.png")
+                            if(y==3){
+                                $("p#s2").text("Berabere")
+                            }
+                            else if(y==1){
+                                $("p#s2").text("Kaybettin")
+                            }
+                            else if(y==2){
+                                $("p#s2").text("Kazandın.")
+                            }
+                }
+            })
+
+                                    
+                    
+                });
+        </script>
+            <body>
+                <h1>Taş Kağıt Makas Oyununa Hoşgeldiniz.</h1>
+                <div class="game"><img id="Banner" src="http://i.hizliresim.com/VDYNoV.png">
+                </div>
+                <div id="rak">
+                    <img class="rakip">
+                </div>
+                <img id ="sonuç">
+                <div id="sncksm">
+                        <h1>
+                            Sonuç
+                        </h1>
+                        <p id="s2"></p>
+                    </div>
+                <div id="biz">
+                    <ul>
+                        <li id="hide"></li>
+                        <li>
+                            <img class="bizimkiler" src="http://i.hizliresim.com/AzJ76p.png">
+                        </li>
+                        <li>
+                            <img class="bizimkiler" src="http://i.hizliresim.com/oV738k.png">
+                        </li>
+                        <li>
+                            <img class="bizimkiler" src="http://i.hizliresim.com/dBb32L.png">
+                        </li>
+                    </ul>
+                </div>
+            </body>
 </html>
